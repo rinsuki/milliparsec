@@ -21,4 +21,13 @@ export default [
     ...common,
     external: ['koa', 'querystring', 'http'],
   },
-]
+].map(config => ({
+  ...config,
+  output: [
+    ...config.output,
+    {
+      file: config.input.replace('src/', 'dist/').replace('.ts', '.cjs'),
+      format: 'cjs',
+    },
+  ],
+}))

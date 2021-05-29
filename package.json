@@ -7,7 +7,7 @@
   "license": "MIT",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "type": "module",
   "keywords": [
     "body-parser",
@@ -20,8 +20,14 @@
     "node": ">=12.4"
   },
   "exports": {
-    ".": "./dist/index.js",
-    "./koa": "./dist/koa.js",
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./koa": {
+      "import": "./dist/koa.js",
+      "require": "./dist/koa.cjs"
+    },
     "./": "./"
   },
   "devDependencies": {
